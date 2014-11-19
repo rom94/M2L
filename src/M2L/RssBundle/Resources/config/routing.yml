@@ -1,0 +1,3 @@
+m2l_rss_test:
+    path:     /test
+    defaults: { _controller: M2LRssBundle:Default:test }

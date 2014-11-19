@@ -1,0 +1,5 @@
+{% for annonce in flux %}
+	<div class="annonceRSS">
+		<b>{{ annonce.titre }}</b> : {{ annonce.description|raw }}
+	</div>
+{% endfor %}

@@ -1,0 +1,4 @@
+m2_l_rss:
+    resource: "@M2LRssBundle/Resources/config/routing.yml"
+    prefix:   /
+
