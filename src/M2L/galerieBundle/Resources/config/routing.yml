@@ -1,0 +1,3 @@
+m2_lgalerie_homepage:
+    path:     /galerie
+    defaults: { _controller: M2LgalerieBundle:Default:index }

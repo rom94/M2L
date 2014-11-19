@@ -1,0 +1,34 @@
+{% block body %}
+{% stylesheets 'M2L/galerieBundle/Ressources/public/css/slider.css' %}
+<link rel="stylesheet" href="{{asset('slider.css') }}"/>
+{% endstylesheets %}
+
+<div id = "slider" style="left:20px; position:absolute;width:40%;" onmouseover="fctDisplayBouton('block');" onmouseout="fctDisplayBouton('none');" >
+{% javascripts '@M2LgalerieBundle/Resources/public/js/JS.js' %}
+<script type="text/javascript" src="{{asset('JS.js') }}"></script>
+{% for image in images %}
+{{image.url}}<br />
+{% endfor %}
+{% endjavascripts %}
+<img src="C:\wamp\www\M2L\src\M2L\galerieBundle\Resources\public\images\basket.jpg">
+</div>
+
+<div id="divConteneurBouton"  style="position:absolute;width:975px;display:none; margin-left:200px; margin-top:50px" onmouseover="fctDisplayBouton('block');" onmouseout="fctDisplayBouton('none');">
+
+<div id="div_boutonprecedent" style="position:absolute;left:30px;">
+<input type="button" value="Pr&eacute;c&eacute;dent" onclick="ChangeImage('avant');" z-index="100" >
+</div>
+
+<div id="div_boutonsuivant" style="position:absolute;right:10%">
+<input type="button" value="Suivant" onclick="ChangeImage('apres');" z-index="100">
+</div>
+
+</div>
+
+
+
+<div class="photo">
+
+</div>
+
+{% endblock %}

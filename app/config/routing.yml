@@ -1,0 +1,4 @@
+m2_lgalerie:
+    resource: "@M2LgalerieBundle/Resources/config/routing.yml"
+    prefix:   /
+
