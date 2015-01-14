@@ -1,3 +1,7 @@
 m2_lgalerie_homepage:
     path:     /galerie
     defaults: { _controller: M2LgalerieBundle:Default:index }
+
+m2_ladmin_galerie:
+    path:     /galerieAdmin
+    defaults: { _controller: M2LgalerieBundle:Admin:GalerieAdmin }
