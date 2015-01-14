@@ -1,0 +1,37 @@
+m2_l_news_homepage:
+    path:     /
+    defaults: { _controller: M2LNewsBundle:Default:index }
+
+m2_l_news_ajouter:
+    path:     /ajouter
+    defaults: { _controller: M2LNewsBundle:Default:ajouter }
+
+m2_l_news_liste:
+    path:     /liste
+    defaults: { _controller: M2LNewsBundle:Default:lister }
+
+m2_l_news_editer:
+    path:     /editer/{id}
+    defaults: { _controller: M2LNewsBundle:Default:editer }
+    requirements:
+        id: \d+
+
+m2_l_news_voir:
+    path:     /annonce/{id}
+    defaults: { _controller: M2LNewsBundle:Default:voir }
+    requirements:
+        id: \d+
+
+m2_l_news_supprimer:
+    path:     /supprimer/{id}
+    defaults: { _controller: M2LNewsBundle:Default:supprimer }
+    requirements:
+        id: \d+
+
+m2_l_news_liste_accueil:
+    path:     /liste_accueil
+    defaults: { _controller: M2LNewsBundle:Default:listerAccueil }
+
+m2_l_news_admin:
+    path:     /admin/news
+    defaults: { _controller: M2LNewsBundle:Admin:admin }

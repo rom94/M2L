@@ -11,7 +11,7 @@ class DefaultController extends Controller
     {
 		$service_rss = $this->container->get('m2l.rss_reader');
 		
-		$flux = $service_rss->read(RssFeed::SPORTS, 2);
+		$flux = $service_rss->read(RssFeed::TENNIS, 5);
 		
         return $this->render('M2LRssBundle:Default:index.html.twig', array('flux' => $flux));
     }

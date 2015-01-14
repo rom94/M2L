@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> {% block title %} M2L {% endblock %} </title>
+	{% block stylesheets %}
+		{% stylesheets output="css/main.css" filter="cssrewrite"
+			'bundles/m2lnews/css/bootstrap-annonce.css'
+			'bundles/m2lnews/css/bootstrap-responsive-annonce.css'
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}">
+			<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300" type="text/css">
+		{% endstylesheets %}
+	{% endblock %}
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+  		<div class="navbar-inner">
+    		<div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href=""><span class="color-highlight">M</span>2L</a>
+      			<div class="nav-collapse">
+        			<ul class="nav pull-right">
+			        	<li class="active"><a href="">Accueil</a></li>
+			        	<li><a href="">Ligues</a></li>
+			        	<li><a href="{{ path('m2_l_news_liste') }}">Annonces</a></li>
+			        	<li><a href="">Se Déconnecter</a></li>
+			        	<li><a href="">Contact</a></li>
+       				</ul>
+    			</div>
+      <!--/.nav-collapse -->
+    		</div>
+  		</div>
+	</div>
+	<hr>
+	{% block body %}
+
+		
+	{% endblock %}
+	{% block javascripts %}
+		{% javascripts output="js/main.js"
+			'bundles/m2lnews/js/jquery-1.7.1.min.js'
+			'bundles/m2lnews/js/jquery-ui-1.8.18.custom.min.js'
+			'bundles/m2lnews/js/jquery.smooth-scroll.min.js'
+			'bundles/m2lnews/js/html5.js'
+			'bundles/m2lnews/js/application.js'
+			'bundles/m2lnews/js/bootstrap.js'
+			'bundles/m2lnews/js/bootstrap.min.js'
+			'bundles/m2lnews/js/bootstrap-alert.js'
+			'bundles/m2lnews/js/bootstrap-button.js'
+			'bundles/m2lnews/js/bootstrap-carousel.js'
+			'bundles/m2lnews/js/bootstrap-collapse.js'
+			'bundles/m2lnews/js/bootstrap-dropdown.js'
+			'bundles/m2lnews/js/bootstrap-modal.js'
+			'bundles/m2lnews/js/bootstrap-popover.js'
+			'bundles/m2lnews/js/bootstrap-scrollspy.js'
+			'bundles/m2lnews/js/bootstrap-tab.js'
+			'bundles/m2lnews/js/bootstrap-tooltip.js'
+			'bundles/m2lnews/js/bootstrap-transition.js'
+			'bundles/m2lnews/js/bootstrap-typeahead.js'
+			'bundles/m2lnews/js/lightbox.js'
+		%}
+			<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	{% endblock %}
+</body>
+</html>
