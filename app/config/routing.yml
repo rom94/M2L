@@ -1,4 +1,15 @@
+m2_l_user:
+    resource: "@M2LUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+m2_l_news:
+    resource: "@M2LNewsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+m2_lgalerie:
+    resource: "@M2LgalerieBundle/Resources/config/routing.yml"
+    prefix:   /
+
 m2_l_rss:
     resource: "@M2LRssBundle/Resources/config/routing.yml"
     prefix:   /
-

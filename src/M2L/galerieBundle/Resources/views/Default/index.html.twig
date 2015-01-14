@@ -1,0 +1,103 @@
+{% block body %}  
+{% stylesheets 'bundles/m2lgalerie/css/bootstrap.css' %}
+<link rel="stylesheet" href="{{ asset('bundles/m2lgalerie/css/bootstrap.css') }}"/>
+{% endstylesheets %}
+{% stylesheets 'bundles/m2lgalerie/css/bootstrap_responsive.css' %}
+<link rel="stylesheet" href="{{asset('bundles/m2lgalerie/css/bootstrap_responsive.css') }}"/>
+{% endstylesheets %}
+{% stylesheets 'bundles/m2lgalerie/css/style.css' %}
+<link rel="stylesheet" href="{{asset('bundles/m2lgalerie/css/style.css') }}"/>
+{% endstylesheets %}
+{% javascripts 'bundles/m2lgalerie/js/jquery-1.7.1.min.js' %}
+<script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/jquery-1.7.1.min.js') }}"></script>
+{% endjavascripts %}
+{% javascripts 'bundles/m2lgalerie/js/jquery.nivo.slider.pack.js' %}
+<script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/jquery.nivo.slider.pack.js') }}"></script>
+{% endjavascripts %}
+{% javascripts 'bundles/m2lgalerie/js/jquery.mobile-1.4.5.js' %}
+<script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/jquery.mobile-1.4.5.js') }}"></script>
+{% endjavascripts %}
+{% javascripts 'bundles/m2lgalerie/js/jquery.nivo.slider.pack.js' %}
+<script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/jquery.nivo.slider.pack.js') }}"></script>
+{% endjavascripts %}  
+
+<script type="text/javascript">
+$(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+
+
+function myFunction1() {
+ var image1 = document.getElementById("image1");
+ image1.className = "visibleImage"
+}
+
+function myFunction2() {
+  document.getElementById("image2").className = "visibleImage" ;
+}
+
+function myFunction3() {
+  document.getElementById("image3").className = "visibleImage" ;
+}
+
+</script>
+
+<div id="container" class="container" onclick="myFunction4()">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container"> 
+    	<div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="#"><span class="color-highlight">M</span>2L</a>
+      <div class="nav-collapse">
+        <ul class="nav pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Ligues</a></li>
+          <li><a href="#">Inscription</a></li>
+          <li><a href="#">Connexion</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+<!--</div>-->
+	
+    <div id="wrapper">
+
+        <div class="slider-wrapper theme-default">
+            <div class="ribbon"></div>
+            <div id="slider" class="nivoSlider">
+                <img src="{{ asset('bundles/m2lgalerie/images/tennis.jpg') }}" alt="img1.1" data-transition="slideInLeft" />
+                <img src="{{ asset('bundles/m2lgalerie/images/football.jpg') }}" alt="img2.1" data-transition="slideInLeft" />
+                <img src="{{ asset('bundles/m2lgalerie/images/basket.jpg') }}" alt="img3.1" title="#htmlcaption"data-transition="slideInLeft" />
+            </div>
+        </div>
+
+    </div>
+    
+    <hr>
+    
+    <div id="popupImage">
+    	<button onclick="myFunction1()"><img class="popphoto" id="img1" src="{{ asset('bundles/m2lgalerie/images/tennis.jpg') }}" alt="img1.2" style="width:150px;"></button>
+      <div class="displayedImage" id="image1"><img id="image01" src="{{ asset('bundles/m2lgalerie/images/tennis.jpg') }}"></div>
+
+    	<button onclick="myFunction2()"><img class="popphoto" id="img2" src="{{ asset('bundles/m2lgalerie/images/football.jpg') }}" alt="img2.2" style="width:150px;"></button>
+      <div class="displayedImage" id="image2"><img id="image02" src="{{ asset('bundles/m2lgalerie/images/football.jpg') }}"></div>
+
+    	<button onclick="myFunction3()"><img class="popphoto" id="img3" src="{{ asset('bundles/m2lgalerie/images/basket.jpg') }}" alt="img3.2" style="width:150px;"></button>
+      <div class="displayedImage" id="image3"><img id="image03" src="{{ asset('bundles/m2lgalerie/images/basket.jpg') }}"></div>
+
+    <!--	
+      <div data-role="popup" id="popup1" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="{{asset('bundles/m2lgalerie/images/tennis.jpg') }}" style="max-height:512px;" alt="img1">
+    	</div>
+    	<div data-role="popup" id="popup2" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="{{ asset ('bundles/m2lgalerie/images/football.jpg') }}" style="max-height:512px;" alt="img2">
+    	</div>
+    	<div data-role="popup" id="popup3" data-overlay-theme="b" data-theme="b" data-corners="false">
+    		<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img class="popphoto" src="{{ asset('bundles/m2lgalerie/images/basket.jpg') }}" style="max-height:512px;" alt="img3">
+    	</div>
+    -->
+    </div>
+
+{% endblock %}

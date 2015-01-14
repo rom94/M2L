@@ -1,0 +1,46 @@
+{% extends "M2LNewsBundle:Default:layout.html.twig" %}
+{% block titre %} {{ parent() }} - Voir une annonce {% endblock %}
+{% block body %}
+
+	<div class="container">
+		<div class="span9">
+			<div class="row">
+				<div class="span5">
+					<img src="{{ asset(annonce.photo.AssetPath) }}" alt="{{ annonce.photo.name }}" width="470" height="310">
+				</div>
+
+				<div class="span4">
+					<h3 style="text-decoration:underline; color:#A8BF75"> {{ annonce.titre }} </h3>
+					<p> Mis en ligne le <time> {{ annonce.date|date('d/m/Y') }} </time> par {{ annonce.auteur }} </p>
+					<p> {{ annonce.texte }} </p>
+					<p> Prix : {{ annonce.prix }} € </p>
+					<p>
+						<a href="{{ path('m2_l_news_liste') }}" class="btn btn btn-default">
+							<i class="icon-chevron-left"></i>
+							Retour à la liste
+						</a>
+						<a href="{{ path('m2_l_news_editer', {'id': annonce.id}) }}" class="btn btn-info">
+							<i class="icon-pencil"></i>
+							Editer
+						</a> 
+						<a href="{{ path('m2_l_news_supprimer', {'id': annonce.id}) }}" class="btn btn-danger">  
+							<i class="icon-trash"></i>
+							Supprimer
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <h2> {{ annonce.titre }} </h2> <br/>
+	<img src="{{ asset(annonce.photo.AssetPath) }}" alt="{{ annonce.photo.name }}"> <br/>
+	Prix : {{ annonce.prix }} € <br/>
+	Description : {{ annonce.texte }} <br/>
+	Auteur : {{ annonce.auteur }} <br/>
+	Mis en ligne le <time> {{ annonce.date|date('d/m/Y') }} </time> <br/>
+	<a href="{{ path('m2_l_news_editer', {'id': annonce.id}) }}"> Editer </a> <br/>
+	<a href="{{ path('m2_l_news_liste') }}"> Liste </a> <br/>
+	<a href="{{ path('m2_l_news_supprimer', {'id': annonce.id}) }}"> Supprimer </a> -->
+
+{% endblock %}
