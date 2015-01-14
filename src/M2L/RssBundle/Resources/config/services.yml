@@ -1,0 +1,3 @@
+services:
+    m2l.rss_reader:
+        class: M2L\RssBundle\RssFeed\RssFeed

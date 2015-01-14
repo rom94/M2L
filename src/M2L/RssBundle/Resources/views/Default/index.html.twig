@@ -1,0 +1,5 @@
+<div class="annonceRSS">
+	{% for annonce in flux %}
+		<a href="#" title="{{ annonce.description|raw }}" alt="{{ annonce.description|raw }}">{{ annonce.titre }}</a>
+	{% endfor %}
+</div>
