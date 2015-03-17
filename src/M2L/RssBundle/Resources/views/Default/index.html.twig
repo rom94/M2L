@@ -1,5 +1,15 @@
-{% for annonce in flux %}
-	<div class="annonceRSS">
-		<b>{{ annonce.titre }}</b> : {{ annonce.description|raw }}
-	</div>
-{% endfor %}
+{# {% extends "M2LSiteBundle:Default:layout.html.twig" %} #}
+{% block body %}
+<div>
+		<div class="thumbnail">
+			<h2> Flux RSS </h2>
+			<ul style="list-style-type:none;padding-left:0;margin-left:0;">
+				{% for annonce in flux %}
+					<li style="padding-bottom:10px;">
+						<a href="{{ annonce.link }}" title="{{ annonce.description|raw }}" alt="{{ annonce.description|raw }}">{{ annonce.titre }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+</div>
+{% endblock %}

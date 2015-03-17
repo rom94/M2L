@@ -1,0 +1,40 @@
+{% extends 'M2LSiteBundle:Default:layout.html.twig' %}
+{% block title %} {{ parent() }} - Accueil {% endblock %}
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="responsive-col thumbnail">
+				<h2 style="text-align:center"> Présentation de la maison des ligues de Lorraine</h2>
+				<div>
+					<p class="alinea">
+						La Maison des Ligues de Lorraine (M2L) a pour mission de fournir des espaces et des services aux différentes ligues sportives régionales (du tennis au foot, en passant par le bowling ou encore la plongée sous-marine) et à d'autres structures hébergées. La M2L est une structure financée par le Conseil Régional de Lorraine dont l'administration est déléguée au Comité Régional Olympique et Sportif de Lorraine (CROSL). La structure se compose de quatre bâtiments (A, B, C et D) dont les deux derniers sont neufs. Elle dispose également une convention d'hébergement qui est en cours de révision dû à l'agrandissement des locaux et à la diversification des services proposés. Celle-ci sera assortie d'un règlement intérieur.
+					</p>
+					<p class="alinea">
+						La M2L propose différents services aux différentes ligues présentes dans ces locaux :
+						<ul style="color:#676563;">
+							<li>L'accès à internet (par Ethernet ou Wifi). </li> 
+							<li>Accès à des lignes téléphoniques. </li>
+							<li>Mise à disposition d'une machine à affranchir (facturée aux ligues). </li>
+							<li>Possibilité d'imprimer en quantité et en qualité imprimerie. </li>
+							<li>Un système de réservation de salles à travers l'intranet ou via un site web. </li>
+							<li>Des formations aux bénévoles des clubs sur la législation, la comptabilité associative...</li>
+						</ul> 
+					</p>
+					<p class="alinea">
+						Les locataires ne payent quasiment pas de loyer en comparaison des services proposés. Il est de l'ordre de 5€/m² et par mois ainsi qu'une participation aux charges de gestion courantes 
+						réparties entre les différentes ligues.
+					</p>
+				</div>
+			</div>
+			<div class="responsive-rss">
+				{{ render(controller("M2LRssBundle:Default:voir", { 'nb' : 5, 'ligue' : 'sports' })) }}
+			</div>
+		</div>
+	</div>
+	<hr>
+		<div>
+			{{ render(controller("M2LNewsBundle:Default:listerAccueil")) }}
+		</div>
+
+{% endblock %}

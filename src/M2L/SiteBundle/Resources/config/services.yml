@@ -1,0 +1,4 @@
+services:
+#    m2_l_site.example:
+#        class: M2L\SiteBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

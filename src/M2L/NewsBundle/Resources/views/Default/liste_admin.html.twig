@@ -1,0 +1,42 @@
+{% extends "M2LSiteBundle:Default:layout.html.twig" %}
+{% block title %} {{ parent() }} - Liste des annonces {% endblock %}
+{% block body %}
+
+	<table class="table table-bordered table-striped table-condensed">
+		<caption>
+			<h3> Liste des annonces </h3>
+		</caption>
+		<thead>
+			<tr>
+				<th style="text-align:center"> Id </th>
+				<th style="text-align:center"> Titre </th>
+				<th style="text-align:center"> Auteur </th>
+				<th style="text-align:center"> Texte </th>
+				<th style="text-align:center"> Prix </th>
+				<th style="text-align:center"> Date </th>
+				<th style="text-align:center"> Editer </th>
+				<th style="text-align:center"> Suppression </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for annonce in annonceList %}
+				<tr style="text-align:center">
+					<td> {{ annonce.id }} </td>
+					<td> {{ annonce.titre }} </td>
+					<td> {{ annonce.auteur }} </td>
+					<td> {{ annonce.texte }} </td>
+					<td> {{ annonce.prix }} € </td>
+					<td> {{ annonce.date|date('d/m/Y') }} </td>
+					<td><a href="{{ path('m2_l_news_editer', {'id':annonce.id}) }}" class="btn btn-primary"> Editer </a></td>
+					<td><a href="{{ path('m2_l_news_supprimer', {'id':annonce.id}) }}" class="btn btn-danger"> Supprimer </a></td>
+				</tr>
+
+			{% else %}
+				<tr>
+					<th colspan="5"> Pas d'annonces </th>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

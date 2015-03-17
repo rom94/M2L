@@ -1,0 +1,41 @@
+{% extends "M2LSiteBundle:Default:layout.html.twig" %}
+{% block title %} {{ parent() }} - Liste des utilisateurs {% endblock %}
+{% block body %}
+
+	<table class="table table-bordered table-striped table-condensed">
+		<caption>
+			<h3> Liste des utilisateurs </h3>
+		</caption>
+		<thead>
+			<tr>
+				<th style="text-align:center"> Id </th>
+				<th style="text-align:center"> Pseudo </th>
+				<th style="text-align:center"> Email </th>
+				<th style="text-align:center"> Ligue </th>
+				<th style="text-align:center"> Activé </th>
+				<th style="text-align:center"> Dernière connexion </th>
+				<th style="text-align:center"> Suppression </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in userList %}
+				{% if (is_granted("ROLE_ADMIN_FOOT") and (user.ligue == 'foot')) or (is_granted("ROLE_ADMIN_TENNIS") and (user.ligue == 'tennis')) or (is_granted("ROLE_ADMIN")) %}
+				<tr style="text-align:center">
+					<td> {{ user.id }} </td>
+					<td> {{ user.username }} </td>
+					<td> {{ user.email }} </td>
+					<td> {{ user.ligue }} </td>
+					<td> {{ user.enabled }} </td>
+					<td> {{ user.lastLogin|date('d/m/Y H:i:s') }} </td>
+					<td><a href="{{ path('m2_l_user_supprimer', {'id':user.id}) }}" class="btn btn-danger"> Supprimer </a></td>
+				</tr>
+				{% endif %}
+			{% else %}
+				<tr>
+					<th colspan="5"> Pas d'annonces </th>
+				</tr>
+
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

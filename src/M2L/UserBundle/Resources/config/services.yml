@@ -1,0 +1,10 @@
+services:
+#    m2_l_user.example:
+#        class: M2L\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+    m2_l_user.registration.form.type:
+        class: M2L\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: m2l_user_registration }

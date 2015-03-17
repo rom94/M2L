@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> {% block title %} M2L {% endblock %} </title>
+	{% block stylesheets %}
+		{% stylesheets output="css/main.css" filter="cssrewrite"
+			'bundles/m2lsite/css/bootstrap.css'
+			'bundles/m2lsite/css/bootstrap-responsive.css'
+			'bundles/m2lsite/css/signin.css'
+		%}
+			<link rel="stylesheet" href="{{ asset_url }}">
+			<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300" type="text/css">
+		{% endstylesheets %}
+	{% endblock %}
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+  		<div class="navbar-inner">
+    		<div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="{{ path('m2_l_site_accueil')}}"><span class="color-highlight">M</span>2L</a>
+      			<div class="nav-collapse">
+        			<ul class="nav pull-right">
+			        	<li {% if app.request.attributes.get('_route') == 'm2_l_site_accueil' %}class="active"{% endif %}><a href="{{ path('m2_l_site_accueil')}}">Accueil</a></li>
+						<li {% if app.request.attributes.get('_route') in ['m2_l_site_accueil_football', 'm2_l_site_accueil_tennis'] %}class="active"{% endif %}>
+							<a data-container="body" id="test-popover1" data-toggle="popover" data-placement="bottom" data-content="<ul style='list-style-type:none;margin-left:0;text-align:center;'><li><a href='{{ path('m2_l_site_accueil_football')}}'>Foot</a></li><li><a href='{{ path('m2_l_site_accueil_tennis')}}'>Tennis</a></li></ul>">Ligues</a>
+						</li>
+			        	<li {% if app.request.attributes.get('_route') == 'm2_l_news_liste' %}class="active"{% endif %}><a href="{{ path('m2_l_news_liste') }}">Annonces</a></li>
+			        	<li {% if app.request.attributes.get('_route') == '' %}class="active"{% endif %}><a href="">Galerie photo</a></li>
+			        	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							<li {% if app.request.attributes.get('_route') == 'fos_user_security_logout' %}class="active"{% endif %}><a href="{{ path('fos_user_security_logout') }}">Se d&eacute;connecter</a></li>
+						{% else %}
+							<li {% if app.request.attributes.get('_route') == 'fos_user_security_login' %}class="active"{% endif %}><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+							<li {% if app.request.attributes.get('_route') == 'fos_user_registration_register' %}class="active"{% endif %}><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
+						{% endif %}
+						{% if is_granted("ROLE_ADMIN_LIGUE") %}
+							<li {% if app.request.attributes.get('_route') == 'm2_l_news_admin' %}class="active"{% endif %}><a href="{{ path('m2_l_news_admin') }}">Administration</a></li>
+						{% endif %}
+			        	<li {% if app.request.attributes.get('_route') == 'm2_l_site_contact' %}class="active"{% endif %}><a href="{{ path('m2_l_site_contact') }}">Contact</a></li>
+       				</ul>
+    			</div>
+      <!--/.nav-collapse -->
+    		</div>
+  		</div>
+	</div>
+	<hr>
+	{% block flashBag %}
+		{% for message in app.session.flashbag.get('info') %}
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endblock %}
+	{% block navAdmin %}
+		{% if is_granted("ROLE_ADMIN_LIGUE") %}
+			{% if app.request.attributes.get('_route') in ['m2_l_news_admin', 'm2_l_user_admin'] %}
+				<ul class="nav nav-tabs nav-admin-m2l">
+					<li role="presentation" {% if app.request.attributes.get('_route') == 'm2_l_news_admin' %}class="active"{% endif %}><a href="{{ path('m2_l_news_admin') }}">Liste annonces</a></li>
+					<li role="presentation" {% if app.request.attributes.get('_route') == 'm2_l_user_admin' %}class="active"{% endif %}><a href="{{ path('m2_l_user_admin') }}">Liste des utilisateurs</a></li>
+					<li role="presentation" {# if app.request.attributes.get('_route') == 'm2_l_news_admin' #}class="#active"{# endif #}><a href="{# path('m2_l_news_admin') #}">Galerie</a></li>
+				</ul>
+			{% endif %}
+		{% endif %}
+	{% endblock %}
+	{% block body %}
+
+		
+	{% endblock %}
+	{% block footer %}
+		<footer>
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<div class="nav-collapse">
+							<ul class="nav pull-right">
+								<li><a>&copy;Copyright M2L</a></li>
+								<li><a href="{{ path('m2_l_site_cgu') }}">Mentions l&eacute;gales</a></li>
+								<li><a href="{{ path('m2_l_site_contact') }}">Contact</a></li>
+							</ul>
+						</div>
+			  <!--/.nav-collapse -->
+					</div>
+				</div>
+			</div>
+		</footer>
+	{% endblock %}
+	{% block javascripts %}
+		{% javascripts output="js/main.js"
+			'bundles/m2lsite/js/jquery-1.7.1.min.js'
+			'bundles/m2lsite/js/jquery-ui-1.8.18.custom.min.js'
+			'bundles/m2lsite/js/jquery.smooth-scroll.min.js'
+			'bundles/m2lsite/js/html5.js'
+			'bundles/m2lsite/js/application.js'
+			'bundles/m2lsite/js/bootstrap.js'
+			'bundles/m2lsite/js/bootstrap.min.js'
+			'bundles/m2lsite/js/bootstrap-alert.js'
+			'bundles/m2lsite/js/bootstrap-button.js'
+			'bundles/m2lsite/js/bootstrap-carousel.js'
+			'bundles/m2lsite/js/bootstrap-collapse.js'
+			'bundles/m2lsite/js/bootstrap-dropdown.js'
+			'bundles/m2lsite/js/bootstrap-modal.js'
+			'bundles/m2lsite/js/bootstrap-popover.js'
+			'bundles/m2lsite/js/bootstrap-scrollspy.js'
+			'bundles/m2lsite/js/bootstrap-tab.js'
+			'bundles/m2lsite/js/bootstrap-tooltip.js'
+			'bundles/m2lsite/js/bootstrap-transition.js'
+			'bundles/m2lsite/js/bootstrap-typeahead.js'
+			'bundles/m2lsite/js/lightbox.js'
+		%}
+			<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('[data-toggle="popover"]').popover({template: '<div class="popover" style="position:fixed;top:70px;width:100px;max-width:100px;display:none;"><div class="popover-inner" style="width:100px;max-width:100px;padding:0;background:none;"><div class="popover-content"><p></p></div></div></div>', html:true, trigger:'manual'});
+				
+				$('[data-toggle="popover"]').hover(
+					function() {
+						if($('.popover').length == 0) {
+							$(this).popover('show');
+						}
+						
+						$('#test-popover1').data('hover', true);
+					},
+					function() {
+						$('#test-popover1').data('hover', false);
+						
+						window.setTimeout(function() {	
+							if(!($('#test-popover1').data('hover')) && !($('.popover').data('hover'))) {
+								$('[data-toggle="popover"]').popover('hide');
+							}
+						}, 300);
+					}
+				).data('hover', false);
+				
+				$(this).on('mouseenter', '.popover', function() {
+					$('.popover').data('hover', true);
+				});
+				
+				$(this).on('mouseleave', '.popover', function() {
+					$('.popover').data('hover', false);
+					
+					window.setTimeout(function() {		
+						if(!($('#test-popover1').data('hover')) && !($('.popover').data('hover'))) {
+							$('[data-toggle="popover"]').popover('hide');
+						}
+					}, 300);
+				});
+			});
+		</script>
+{% endblock %}
+</body>
+</html>

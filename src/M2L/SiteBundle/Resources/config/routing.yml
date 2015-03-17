@@ -1,0 +1,19 @@
+m2_l_site_accueil:
+    path:     /
+    defaults: { _controller: M2LSiteBundle:Default:accueil }
+
+m2_l_site_accueil_tennis:
+    path:     /accueil_tennis
+    defaults: { _controller: M2LSiteBundle:Default:accueilTennis }
+
+m2_l_site_accueil_football:
+    path:     /accueil_football
+    defaults: { _controller: M2LSiteBundle:Default:accueilFootball }
+
+m2_l_site_contact:
+    path:     /contact
+    defaults: { _controller: M2LSiteBundle:Default:contact }
+
+m2_l_site_cgu:
+    path:     /cgu
+    defaults: { _controller: M2LSiteBundle:Default:cgu }

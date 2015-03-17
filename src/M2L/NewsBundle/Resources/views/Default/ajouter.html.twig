@@ -1,0 +1,57 @@
+{% extends "M2LSiteBundle:Default:layout.html.twig" %}
+{% block title %} {{ parent() }} - Ajouter une annonce {% endblock %}
+{% block body %}
+    <h1 style="text-align:center"> Ajouter une annonce </h1>
+    <div class="container">
+        <form action="{{ path('m2_l_news_ajouter') }}" method="POST" {{ form_enctype(form) }} class="form-actions">
+            <div class="form-group">
+                {{ form_errors(form.titre) }}
+                {{ form_label(form.titre, "Titre de l'article", { 'label_attr': {'class':'span4 control-label', 'style':'text-align:center'} }) }}
+                <div>
+                    {{ form_widget(form.titre, { 'attr': { 'class': 'span4' } }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.texte) }}
+                {{ form_label(form.texte, "Texte de l'annonce", { 'label_attr': {'class':'span4 control-label', 'style':'text-align:center'} }) }}
+                <div>
+                    {{ form_widget(form.texte, { 'attr': { 'class': 'span4' } }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.prix) }}
+                {{ form_label(form.prix, "Prix", { 'label_attr': {'class':'span4 control-label', 'style':'text-align:center'} }) }}
+                <div>
+                    {{ form_widget(form.prix, { 'attr': { 'class': 'span4' } }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.date) }}
+                {{ form_label(form.date, "Date de l'annonce", { 'label_attr': {'class':'span4 control-label', 'style':'text-align:center'} }) }}
+                <div>
+                    {{ form_widget(form.date, { 'attr': { 'class': 'span4' } }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.photo.file) }}
+                {{ form_label(form.photo.file, "Ajouter une photo", { 'label_attr': {'class':'span4 control-label', 'style':'text-align:center'} }) }}
+                <div>
+                    {{ form_widget(form.photo.file, { 'attr': { 'class': 'span4' } }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_errors(form.photo.name) }}
+                {{ form_label(form.photo.name, "Nom de la photo", { 'label_attr': {'class':'span4 control-label', 'style':'text-align:center'} }) }}
+                <div>
+                    {{ form_widget(form.photo.name, { 'attr': { 'class': 'span4' } }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="span9" style="text-align:center">
+                    {{ form_rest(form) }}
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

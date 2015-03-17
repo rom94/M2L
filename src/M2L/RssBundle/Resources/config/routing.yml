@@ -1,3 +1,6 @@
-m2l_rss_test:
-    path:     /test
-    defaults: { _controller: M2LRssBundle:Default:test }
+m2l_rss_voir:
+    path:     /rss/voir
+    defaults: { _controller: M2LRssBundle:Default:voir }
+    requirements:
+        nb: \d+
+        ligue: foot | tennis | sports
