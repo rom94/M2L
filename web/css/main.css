@@ -5679,6 +5679,15 @@ footer > p {
 	margin-bottom: 50px;
 } 
 @media (min-width: 1200px) {
+  .responsive-rss {
+    width:47%;
+    float:left;
+    margin-left:15px;
+  }
+  .responsive-col {
+    width:50%;
+    float:left;
+  }
   .row {
     margin-left: -30px;
     *zoom: 1;
