@@ -1,0 +1,31 @@
+{% block body %}
+
+ <table class="table table-bordered table-striped table-condensed">
+  <caption>
+   <h3> Liste des annonces </h3>
+  </caption>
+  <thead>
+   <tr>
+    <th style="text-align:center"> Alt </th>
+    <th style="text-align:center"> Editer </th>
+    <th style="text-align:center"> Pages </th>
+   </tr>
+  </thead>
+  <tbody>
+   {% for galerieAdmin in galerieList %}
+    <tr style="text-align:center">
+     <td> {{ galerieAdmin.name }} </td>
+     <td><a href="{{ path('m2_l_news_editer', {'id':galerieAdmin.id}) }}" class="btn btn-primary"> Editer </a></td>
+     <td> {% if galerieAdmin.id <= 5 %} Galerie mixte (Principale){% endif %}
+
+          {% if galerieAdmin.id >= 11 %} Galerie Tennis {% elseif galerieAdmin.id >= 6 %}Galerie Foot{% endif %}
+      
+    </tr>
+   {% else %}
+    <tr>
+     <th colspan="5"> Pas d'annonces </th>
+    </tr>
+  {% endfor %}
+  </tbody>
+ </table>
+{% endblock %}

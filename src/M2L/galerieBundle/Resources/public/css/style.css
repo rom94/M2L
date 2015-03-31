@@ -88,12 +88,6 @@ a, a:visited {
     margin-top:150px;
 }
 
-#wrapper{
-	clear: both;
-	width: 640px;
-	margin-left: 160px;
-}
-
 /*====================*/
 /*=== Other Styles ===*/
 /*====================*/
@@ -150,9 +144,36 @@ a.nivo-prevNav, a.nivo-nextNav, div.nivo-controlNav{
 
 #popupImage .displayedImage{
 	display: none;
-	position: absolute;
 }
 
 #popupImage .visibleImage{
 	display: block;
+	margin-left: 14.8%;
+	margin-top: -34%;
+	position: absolute;
+	z-index: 2;
+	box-shadow: 5px 5px 25px black;
+}
+
+.visible{
+	display:block;
+	width: 100%;
+	background-color: black!important;
+	opacity: .5;
+	height: 200%;
+	position: absolute;
+	left: 0;
+	z-index: 1;
+}
+
+.displayedBackground{
+	display:none;
+}
+
+.container{
+	width: 65%;
+}
+
+.imgDiapo{
+	width: 50%;
 }

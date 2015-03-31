@@ -26,39 +26,19 @@
 {% javascripts 'bundles/m2lgalerie/js/bootstrap-carousel.js' %}
 <script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/bootstrap-carousel.js') }}"></script>
 {% endjavascripts %}
+
 {% javascripts '@M2LgalerieBundle/Resources/public/js/jquery.nivo.slider.pack.js' %}
 <script type="text/javascript">
-
-/* fonction pour faire pop les images miniatures */
-function showPic(imgId) {
- var image = document.getElementById("imageBox"+imgId);
-
- image.className = "visibleImage";
- var backgroundBlack = document.getElementById("backgroundBlack");
- backgroundBlack.className = "visible";
-}
-
-
-/* fonction pour remove les images ayant pop, en cliquant partout dans la div "backgroundBlack" */
-function hideAll(){
-  $(".visibleImage").each( function(){
-    $(this).addClass("displayedImage");
-    $(this).removeClass("visibleImage");
-
-  } );
-  var block = document.getElementById("backgroundBlack");
-
- block.className = "displayedBackground";
-
-
-/* jquery pour controler l'intervalle du slider (carousel) */
-}
 $(document).ready(function() {
 $('.carousel').carousel({
-  interval: 4000
+  interval: 4500
 });
 
 });
+
+
+
+
 </script>
 {% endjavascripts %}  
 
@@ -69,9 +49,8 @@ $('.carousel').carousel({
   <!--Start Carousel-->
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
-      <!-- le slice permet de gérer les images à integrer dans le slider -->
-      <!-- slice(0,5) prend les 5 premières images stocké dans la BDD -->
-       {% for galerieAdmin in galerieList|slice(0,5) %}
+       {% for galerieAdmin in galerieList|slice(10,15) %}
+   
       <div class="item {% if loop.index  == 1 %} active {% endif %}">
         <img src="{{ asset(galerieAdmin.AssetPath) }}" alt="" class="imgDiapo">
         <div class="carousel-caption">
@@ -80,10 +59,9 @@ $('.carousel').carousel({
       </div>
     {% endfor %}
   </div>
-    <!-- lien des flèches du slider -->
+    
     <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="{{ asset('bundles/m2lgalerie/images/arrow.png') }}" alt=""></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="{{ asset('bundles/m2lgalerie/images/arrow2.png') }}" alt=""></a> </div>
   <!--End Carousel-->
-  </div>
- 
+  </div> 
 
 {% endblock %}

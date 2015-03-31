@@ -1,3 +1,5 @@
+{% extends 'M2LSiteBundle:Default:layout.html.twig' %}
+{% block title %} {{ parent() }} - Galerie Photo {% endblock %}
 {% block body %}  
 {% stylesheets 'bundles/m2lgalerie/css/bootstrap.css' %}
 <link rel="stylesheet" href="{{asset('bundles/m2lgalerie/css/bootstrap.css') }}"/>
@@ -50,40 +52,28 @@ function hideAll(){
 
  block.className = "displayedBackground";
 
-
-/* jquery pour controler l'intervalle du slider (carousel) */
 }
-$(document).ready(function() {
-$('.carousel').carousel({
-  interval: 4000
-});
-
-});
 </script>
 {% endjavascripts %}  
 
 <div id="container" class="container">
     <div id="backgroundBlack" onclick="hideAll()"></div>
-  <div class="container">
-  
-  <!--Start Carousel-->
-  <div id="myCarousel" class="carousel slide">
-    <div class="carousel-inner">
-      <!-- le slice permet de gérer les images à integrer dans le slider -->
-      <!-- slice(0,5) prend les 5 premières images stocké dans la BDD -->
-       {% for galerieAdmin in galerieList|slice(0,5) %}
-      <div class="item {% if loop.index  == 1 %} active {% endif %}">
-        <img src="{{ asset(galerieAdmin.AssetPath) }}" alt="" class="imgDiapo">
-        <div class="carousel-caption">
-          <h4>{{ galerieAdmin.name }}</h4>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-    <!-- lien des flèches du slider -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="{{ asset('bundles/m2lgalerie/images/arrow.png') }}" alt=""></a> <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="{{ asset('bundles/m2lgalerie/images/arrow2.png') }}" alt=""></a> </div>
-  <!--End Carousel-->
-  </div>
+    
+    <hr>
+    <!-- Mise en place des miniatures (pour les pop up) -->
+    <div id="popupImage">
+    {% for galerieAdmin in galerieList|slice(5,15) %}
+    
+      <!-- Pop Up Miniature -->
+    	<button onclick="showPic({{ loop.index }})"><img class="popphoto" id="img{{ loop.index }}" src="{{ asset(galerieAdmin.AssetPath) }}" alt="{{ galerieAdmin.name }}" style="width:150px;"></button>
+
+      <!-- déployement des pop up -->
+      <div class="displayedImage" id="imageBox{{ loop.index }}"><img id="image{{ loop.index }}" src="{{ asset(galerieAdmin.AssetPath) }}"></div>
+     
+     
+
+ {% endfor %}
+</div>
  
 
 {% endblock %}
