@@ -2,6 +2,32 @@ m2_lgalerie_homepage:
     path:     /galerie
     defaults: { _controller: M2LgalerieBundle:Default:index }
 
+m2_lgalerie_popup:
+    path:     /galeriePopup
+    defaults: { _controller: M2LgalerieBundle:Default:galeriePopup }
+
+m2_lgalerie_galerie_foot:
+    path:     /galerieFoot
+    defaults: { _controller: M2LgalerieBundle:Default:galerieFoot }
+
+m2_lgalerie_galerie_tennis:
+    path:     /galerieTennis
+    defaults: { _controller: M2LgalerieBundle:Default:galerieTennis }
+
 m2_ladmin_galerie:
     path:     /galerieAdmin
-    defaults: { _controller: M2LgalerieBundle:Admin:GalerieAdmin }
+    defaults: { _controller: M2LgalerieBundle:Admin:galerie }
+
+m2_liste_galerie:
+    path:     /galerieList
+    defaults: { _controller: M2LgalerieBundle:Default:listerGalerie }
+
+m2_ajouter_galerie:
+    path:     /ajouterGalerie
+    defaults: { _controller: M2LgalerieBundle:Admin:ajouterGalerie }
+
+m2_l_news_editer:
+    path:     /editImage/{id}
+    defaults: { _controller: M2LgalerieBundle:Admin:editerGalerie }
+    requirements:
+        id: \d+

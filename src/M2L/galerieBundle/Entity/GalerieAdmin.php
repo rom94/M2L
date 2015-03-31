@@ -3,12 +3,14 @@
 namespace M2L\galerieBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\component\validator\Constraints as Assert;
 
 /**
- * Image
+ * GalerieAdmin
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="M2L\galerieBundle\Entity\ImageRepository")
+ * @ORM\Entity(repositoryClass="M2L\galerieBundle\Entity\GalerieAdminRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class GalerieAdmin
 {
@@ -22,19 +24,85 @@ class GalerieAdmin
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @var \DateTime
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
-    private $url;
+    private $updateAt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="alt", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $alt;
+    private $name;
 
+    /**
+     * @ORM\Column(name="path", type="string", length=255, nullable=true)
+     */
+    private $path;
+
+
+    /**
+   * @Assert\Image(minWidth=550, maxWidth=950, minHeight=350, maxHeight=700)
+   */
+    public $file;
+
+    public function getUploadRootDir()
+    {
+        return __dir__.'/../../../../web/uploads/galerie';
+    }
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getAssetPath()
+    {
+        return 'uploads/galerie/'.$this->path;
+    }
+
+    /**
+     * @ORM\Prepersist()
+     * @ORM\Preupdate()
+     */
+    public function preUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+        $this->oldFile = $this->getPath();
+        $this->updateAt = new \DateTime();
+
+        if(null !== $this->file) 
+            $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+    }
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if(null !== $this->file){
+            $this->file->move($this->getUploadRootDir(), $this->path);
+            unset($this->file);
+
+            if($this->oldFile != null) unlink($this->tempFile);
+        }
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemoveUpload()
+    {
+        $this->tempFile = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if(file_exists($this->tempFile)) unlink($this->tempFile);
+    }
 
     /**
      * Get id
@@ -46,49 +114,18 @@ class GalerieAdmin
         return $this->id;
     }
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     * @return Image
-     */
-    public function setUrl($url)
+    public function getPath()
     {
-        $this->url = $url;
-    
-        return $this;
+        return $this->path;
     }
 
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
+    public function getName()
     {
-        return $this->url;
+        return $this->name;
     }
 
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-    
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string 
-     */
-    public function getAlt()
-    {
-        return $this->alt;
+    public function setName($name){
+        $this->name = $name;
     }
 }
+?>

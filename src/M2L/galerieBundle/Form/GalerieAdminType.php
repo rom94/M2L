@@ -15,9 +15,9 @@ class GalerieAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('url')
-            ->add('alt')
-        ;
+            ->add('file', 'file', array('required' => false))
+            ->add('name', 'text')
+            ->add('enregistrer', 'submit', array('attr'=>array('class'=>'btn btn-primary')));
     }
     
     /**
@@ -35,6 +35,6 @@ class GalerieAdminType extends AbstractType
      */
     public function getName()
     {
-        return 'm2l_galeriebundle_galerieadmin';
+        return 'm2l_galeriebundle_galerieAdmin';
     }
 }
