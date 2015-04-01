@@ -1,9 +1,14 @@
 {% extends 'M2LSiteBundle:Default:layout.html.twig' %}
 {% block title %} {{ parent() }} - Accueil football {% endblock %}
 {% block body %}
+	<div>
+		{{ render(controller("M2LgalerieBundle:GalerieFoot:galerieFoot")) }}
+	</div>
+	<hr>
 	<div class="container">
 		{{ render(controller("M2LRssBundle:Default:voir", { 'nb' : 5, 'ligue' : 'foot' })) }}
-	</div><hr>
+	</div>
+	<hr>
 	<div>
 		{{ render(controller("M2LNewsBundle:Default:listerAccueil")) }}
 	</div>

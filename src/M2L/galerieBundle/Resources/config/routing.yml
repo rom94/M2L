@@ -26,7 +26,7 @@ m2_ajouter_galerie:
     path:     /ajouterGalerie
     defaults: { _controller: M2LgalerieBundle:Admin:ajouterGalerie }
 
-m2_l_news_editer:
+m2_l_image_editer:
     path:     /editImage/{id}
     defaults: { _controller: M2LgalerieBundle:Admin:editerGalerie }
     requirements:

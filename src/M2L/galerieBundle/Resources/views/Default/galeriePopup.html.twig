@@ -10,8 +10,8 @@
 {% stylesheets 'bundles/m2lgalerie/css/style.css' %}
 <link rel="stylesheet" href="{{asset('bundles/m2lgalerie/css/style.css') }}"/>
 {% endstylesheets %}
-{% javascripts 'bundles/m2lgalerie/js/jquery-1.7.1.min.js' %}
-<script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/jquery-1.7.1.min.js') }}"></script>
+{% javascripts 'bundles/m2lgalerie/js/jquery-1.11.2.js' %}
+<script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/jquery-1.11.2.js') }}"></script>
 {% endjavascripts %}
 {% javascripts 'bundles/m2lgalerie/js/jquery.nivo.slider.pack.js' %}
 <script type="text/javascript" src="{{asset('bundles/m2lgalerie/js/jquery.nivo.slider.pack.js') }}"></script>
@@ -59,7 +59,7 @@ function hideAll(){
 <div id="container" class="container">
     <div id="backgroundBlack" onclick="hideAll()"></div>
     
-    <hr>
+    
     <!-- Mise en place des miniatures (pour les pop up) -->
     <div id="popupImage">
     {% for galerieAdmin in galerieList|slice(5,15) %}
