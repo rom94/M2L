@@ -1,6 +1,9 @@
 {% extends 'M2LSiteBundle:Default:layout.html.twig' %}
 {% block title %} {{ parent() }} - Accueil tennis {% endblock %}
 {% block body %}
+	<div>
+		{{ render(controller("M2LgalerieBundle:GalerieTennis:galerieTennis")) }}
+	</div>
 	<div class="container">
 		{{ render(controller("M2LRssBundle:Default:voir", { 'nb' : 5, 'ligue' : 'tennis' })) }}
 	</div><hr>

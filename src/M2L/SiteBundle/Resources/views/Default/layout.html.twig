@@ -25,7 +25,7 @@
 							<a data-container="body" id="test-popover1" data-toggle="popover" data-placement="bottom" data-content="<ul style='list-style-type:none;margin-left:0;text-align:center;'><li><a href='{{ path('m2_l_site_accueil_football')}}'>Foot</a></li><li><a href='{{ path('m2_l_site_accueil_tennis')}}'>Tennis</a></li></ul>">Ligues</a>
 						</li>
 			        	<li {% if app.request.attributes.get('_route') == 'm2_l_news_liste' %}class="active"{% endif %}><a href="{{ path('m2_l_news_liste') }}">Annonces</a></li>
-			        	<li {% if app.request.attributes.get('_route') == '' %}class="active"{% endif %}><a href="">Galerie photo</a></li>
+			        	<li {% if app.request.attributes.get('_route') == 'm2_lgalerie_popup' %}class="active"{% endif %}><a href="{{ path('m2_lgalerie_popup') }}">Galerie photo</a></li>
 			        	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 							<li {% if app.request.attributes.get('_route') == 'fos_user_security_logout' %}class="active"{% endif %}><a href="{{ path('fos_user_security_logout') }}">Se d&eacute;connecter</a></li>
 						{% else %}
@@ -53,11 +53,11 @@
 	{% endblock %}
 	{% block navAdmin %}
 		{% if is_granted("ROLE_ADMIN_LIGUE") %}
-			{% if app.request.attributes.get('_route') in ['m2_l_news_admin', 'm2_l_user_admin'] %}
+			{% if app.request.attributes.get('_route') in ['m2_l_news_admin', 'm2_l_user_admin', 'm2_ladmin_galerie'] %}
 				<ul class="nav nav-tabs nav-admin-m2l">
 					<li role="presentation" {% if app.request.attributes.get('_route') == 'm2_l_news_admin' %}class="active"{% endif %}><a href="{{ path('m2_l_news_admin') }}">Liste annonces</a></li>
 					<li role="presentation" {% if app.request.attributes.get('_route') == 'm2_l_user_admin' %}class="active"{% endif %}><a href="{{ path('m2_l_user_admin') }}">Liste des utilisateurs</a></li>
-					<li role="presentation" {# if app.request.attributes.get('_route') == 'm2_l_news_admin' #}class="#active"{# endif #}><a href="{# path('m2_l_news_admin') #}">Galerie</a></li>
+					<li role="presentation" {% if app.request.attributes.get('_route') == 'm2_ladmin_galerie' %}class="active"{% endif %}><a href="{{ path('m2_ladmin_galerie') }}">Galerie</a></li>
 				</ul>
 			{% endif %}
 		{% endif %}
@@ -86,7 +86,7 @@
 	{% endblock %}
 	{% block javascripts %}
 		{% javascripts output="js/main.js"
-			'bundles/m2lsite/js/jquery-1.7.1.min.js'
+			'bundles/m2lsite/js/jquery-1.11.2.js'
 			'bundles/m2lsite/js/jquery-ui-1.8.18.custom.min.js'
 			'bundles/m2lsite/js/jquery.smooth-scroll.min.js'
 			'bundles/m2lsite/js/html5.js'

@@ -1,9 +1,12 @@
 {% extends 'M2LSiteBundle:Default:layout.html.twig' %}
 {% block title %} {{ parent() }} - Accueil {% endblock %}
 {% block body %}
-
 	<div class="container">
 		<div class="row">
+			<div>
+				{{ render(controller("M2LgalerieBundle:Default:index")) }}
+			</div>
+			<hr>
 			<div class="responsive-col thumbnail">
 				<h2 style="text-align:center"> Présentation de la maison des ligues de Lorraine</h2>
 				<div>
